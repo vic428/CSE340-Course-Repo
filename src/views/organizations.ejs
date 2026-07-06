@@ -1,16 +1,66 @@
 <%- include('partials/header') %>
 
-<main>
-    <h1><%= title %></h1>
-    <!-- Put your page-specific content here -->
-     <p>Here are a few of our partner organizations:</p>
-           <ul>
-                <li><img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo"><strong>BrightFuture Builders</strong>: info@brightfuture.org</li>
-                <li><img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo"><strong>GreenHarvest Growers</strong>: contact@greenharvest.org</li>
-                <li><img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo"><strong>UnityServe Volunteers</strong>: hello@unityserve.org</li>
-           </ul>
+<main class="page page-organizations">
+    <%- include('partials/page-banner', {
+        title,
+        eyebrow: 'Partner Organizations',
+        subtitle: 'Meet a few of the community-minded groups that trust Service Network to help them connect with volunteers and support local needs.',
+        bannerClass: 'page-banner--organizations'
+    }) %>
+
+    <section class="content-intro">
+        <h2>Organizations doing meaningful work</h2>
+        <p class="lead">Our partners represent a range of causes and service models, but they share a common goal: creating stronger communities through consistent, people-centered work.</p>
+        <p>These organizations rely on volunteers for everything from event support and mentoring to environmental care and neighborhood outreach.</p>
+    </section>
+
+    <section class="organization-grid">
+        <article class="organization-card">
+            <img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo">
+            <h3>BrightFuture Builders</h3>
+            <p>BrightFuture Builders supports students and families through after-school programs, practical mentorship, and educational outreach.</p>
+            <p class="organization-meta">Focus areas: youth development, tutoring, and family support</p>
+            <a href="mailto:info@brightfuture.org">info@brightfuture.org</a>
+        </article>
+        <article class="organization-card">
+            <img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo">
+            <h3>GreenHarvest Growers</h3>
+            <p>GreenHarvest Growers leads projects that promote sustainability, community gardening, and environmental stewardship.</p>
+            <p class="organization-meta">Focus areas: green spaces, food access, and environmental education</p>
+            <a href="mailto:contact@greenharvest.org">contact@greenharvest.org</a>
+        </article>
+        <article class="organization-card">
+            <img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo">
+            <h3>UnityServe Volunteers</h3>
+            <p>UnityServe Volunteers coordinates neighborhood-based outreach that helps residents access practical support and shared community resources.</p>
+            <p class="organization-meta">Focus areas: community outreach, volunteer coordination, and local events</p>
+            <a href="mailto:hello@unityserve.org">hello@unityserve.org</a>
+        </article>
+    </section>
+
+    <section class="section-panel">
+        <h2>Why partnership matters</h2>
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Trusted collaboration</h3>
+                <p>Strong partnerships help us surface projects that are organized, relevant, and ready for volunteers to join.</p>
+            </article>
+            <article class="info-card">
+                <h3>Better volunteer experiences</h3>
+                <p>Organizations can clearly communicate their needs, which leads to smoother service days and better outcomes for everyone involved.</p>
+            </article>
+            <article class="info-card">
+                <h3>Shared community impact</h3>
+                <p>When volunteers and organizations connect effectively, more needs are met and more neighborhoods benefit.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-banner cta-banner--compact">
+        <h2>Interested in becoming a partner organization?</h2>
+        <p>We help teams highlight their needs, attract volunteers, and communicate project expectations with greater clarity.</p>
+        <a href="/about-us" class="btn-primary">Contact Our Team</a>
+    </section>
 </main>
 
 <%- include('partials/footer') %>
-
-

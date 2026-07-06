@@ -1,0 +1,11 @@
+<section class="page-banner <%= bannerClass || '' %>">
+    <div class="page-banner__inner">
+        <% if (typeof eyebrow !== 'undefined' && eyebrow) { %>
+            <p class="page-banner__eyebrow"><%= eyebrow %></p>
+        <% } %>
+        <h1><%= title %></h1>
+        <% if (typeof subtitle !== 'undefined' && subtitle) { %>
+            <p class="page-banner__subtitle"><%= subtitle %></p>
+        <% } %>
+    </div>
+</section>

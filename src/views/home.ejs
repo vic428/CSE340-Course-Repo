@@ -1,14 +1,85 @@
 <%- include('partials/header') %>
 
-<main>
-    <h1><%= title %></h1>
-    
-    <h2>Welcome to the CSE340 Service Network!</h2>
-    <p>Our mission is to promote service across the world by connecting volunteers with service opportunities in their community.</p>
-    <img class="main-logo" src="images/cse340-service-network.png" alt="CSE 340 Service Network Logo">
+<main class="home">
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow"><%= title %></p>
+            <h1>Serve where you are needed most.</h1>
+            <p>Service Network connects volunteers, families, and community groups with meaningful opportunities that strengthen neighborhoods and support trusted local organizations.</p>
+        </div>
+        <div class="hero-cta">
+            <a href="/projects" class="btn-primary">Find a Project</a>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <h2>500+</h2>
+            <p>Volunteers Connected</p>
+        </div>
+        <div class="stat">
+            <h2>80+</h2>
+            <p>Projects Posted</p>
+        </div>
+        <div class="stat">
+            <h2>25+</h2>
+            <p>Partnering Organizations</p>
+        </div>
+    </section>
+
+    <section class="mission">
+        <h2>Connecting Volunteers to the Organizations That Need Them</h2>
+        <p>Service Network simplifies service by gathering curated opportunities in one place, clarifying next steps, and helping people discover work that matches their schedules, interests, and abilities.</p>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How Service Network Works</h2>
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Browse trusted opportunities</h3>
+                <p>Explore local service projects organized by cause, time commitment, and community need.</p>
+            </article>
+            <article class="info-card">
+                <h3>Choose a project that fits</h3>
+                <p>Select service opportunities that match your skills, availability, and preferred way to help.</p>
+            </article>
+            <article class="info-card">
+                <h3>Show up and make an impact</h3>
+                <p>Connect with partner organizations, support real needs, and serve alongside others in your community.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="home-categories">
+        <h2>Explore by Category</h2>
+        <ul class="category-cards">
+            <li>
+                <h3>Environmental</h3>
+                <p>Protect and preserve parks, neighborhoods, and the natural world around you.</p>
+            </li>
+            <li>
+                <h3>Educational</h3>
+                <p>Support learning, literacy, and skill-building for students and lifelong learners.</p>
+            </li>
+            <li>
+                <h3>Community Service</h3>
+                <p>Strengthen local ties through outreach, food support, and neighborhood initiatives.</p>
+            </li>
+            <li>
+                <h3>Health and Wellness</h3>
+                <p>Help others access resources that promote healthier, safer, and fuller lives.</p>
+            </li>
+        </ul>
+        <a href="/categories" class="btn-secondary">View All Categories</a>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Have a Great Service Project in Mind?</h2>
+        <p>The best opportunities are collaborative. Service Network helps connect nonprofits, community groups, faith-based teams, and local volunteers so ideas can grow into meaningful projects.</p>
+        <a href="/projects" class="btn-primary">Submit a Project</a>
+    </section>
+
 </main>
 
 <%- include('partials/footer') %>
-
-
-

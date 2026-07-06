@@ -1,61 +1,101 @@
 <%- include('partials/header') %>
 
-<main>
-    <h1><%= title %></h1>
+<main class="page page-about">
+    <%- include('partials/page-banner', {
+        title,
+        eyebrow: 'About Service Network',
+        subtitle: 'We make it easier for volunteers and organizations to find each other, coordinate service, and create lasting community impact.',
+        bannerClass: 'page-banner--about'
+    }) %>
 
-    <p>Service Network connects volunteers with organizations that need them. We believe that everyone has something to give, and every community has needs that can be met when people come together.</p>
+    <section class="content-intro">
+        <h2>Built to make service easier to find</h2>
+        <p class="lead">Service Network connects volunteers with organizations that need them. We believe every person has something valuable to contribute, and every community grows stronger when service is easy to discover and simple to join.</p>
+        <p>From first-time volunteers to established community groups, we work to remove friction, spotlight trusted opportunities, and help people take the next step from interest to action.</p>
+    </section>
 
-    <h2>Our Mission</h2>
-    <p>To make it simple for individuals, families, and groups to find meaningful volunteer opportunities, and to help organizations find the help they need to carry out their work.</p>
+    <section class="impact-grid">
+        <article class="impact-card">
+            <h3>500+ volunteers</h3>
+            <p>Connected with projects that match their time, interests, and skills.</p>
+        </article>
+        <article class="impact-card">
+            <h3>80+ service projects</h3>
+            <p>Highlighted across environmental, educational, community, and wellness needs.</p>
+        </article>
+        <article class="impact-card">
+            <h3>25+ partner groups</h3>
+            <p>Working alongside us to create responsive, people-centered opportunities.</p>
+        </article>
+    </section>
 
-    <h2>Our Story</h2>
-    <p>Service Network started as a small community effort to connect local volunteers with nearby projects. Since then, we've grown to partner with organizations across environmental, educational, community service, and health and wellness categories, helping thousands of volunteers find projects that match their skills and passions.</p>
+    <section class="info-grid">
+        <article class="info-card">
+            <h3>Our Mission</h3>
+            <p>We make it simple for individuals, families, and groups to find meaningful volunteer opportunities while helping organizations recruit support for the work they are already doing.</p>
+        </article>
+        <article class="info-card">
+            <h3>Our Story</h3>
+            <p>Service Network began as a small local effort to connect neighbors with nearby projects. It has grown into a broader community resource built around trust, clarity, and meaningful service.</p>
+        </article>
+        <article class="info-card">
+            <h3>How We Help</h3>
+            <p>We curate opportunities, communicate expectations, and make sure volunteers can quickly understand where they are needed and how to get involved.</p>
+        </article>
+    </section>
 
-    <h2>Our Values</h2>
-    <ul>
-        <li><strong>Service</strong> - We believe small acts of service create big change.</li>
-        <li><strong>Community</strong> - We're stronger when we work together.</li>
-        <li><strong>Accessibility</strong> - Volunteering should be easy to find and easy to join.</li>
-        <li><strong>Partnership</strong> - We support the organizations doing the work on the ground.</li>
-    </ul>
+    <section class="section-panel">
+        <h2>Our Values</h2>
+        <ul class="content-list">
+            <li><strong>Service</strong> - Small acts of service create meaningful change when people show up consistently.</li>
+            <li><strong>Community</strong> - Strong neighborhoods are built when people work together toward shared goals.</li>
+            <li><strong>Accessibility</strong> - Volunteering should be easy to discover, easy to understand, and easy to join.</li>
+            <li><strong>Partnership</strong> - We support the organizations already doing the work on the ground.</li>
+        </ul>
+    </section>
 
-    <h2>Get in Touch</h2>
-    <p>Have a question, a project idea, or want to partner with us? We'd love to hear from you.</p>
-
-    <ul class="contact-info">
-        <li><strong>Email:</strong> info@servicenetwork.org</li>
-        <li><strong>Phone:</strong> (234) 800-123-4567</li>
-        <li><strong>Address:</strong> 12 Community Way, Uyo, Akwa Ibom State, Nigeria</li>
-    </ul>
-
-    <% if (typeof success !== 'undefined' && success) { %>
-        <p class="success-message">Thanks for reaching out — we'll get back to you soon!</p>
-    <% } %>
-
-    <h3>Send Us a Message</h3>
-    <form action="/contact" method="POST">
-        <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+    <section class="contact-section">
+        <div class="contact-copy">
+            <h2>Get in Touch</h2>
+            <p>Have a question, a project idea, or want to explore a partnership? We would love to hear from you and help you find the right next step.</p>
+            <ul class="contact-info">
+                <li><strong>Email:</strong> info@servicenetwork.org</li>
+                <li><strong>Phone:</strong> (234) 800-123-4567</li>
+                <li><strong>Address:</strong> 12 Community Way, Uyo, Akwa Ibom State, Nigeria</li>
+            </ul>
         </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+        <div class="contact-form-wrap">
+            <% if (typeof success !== 'undefined' && success) { %>
+                <p class="success-message">Thanks for reaching out - we will get back to you soon.</p>
+            <% } %>
 
-        <div>
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject">
-        </div>
+            <h3>Send Us a Message</h3>
+            <form action="/contact" method="POST">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-        <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-        <button type="submit">Send Message</button>
-    </form>
+                <div>
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 </main>
 
 <%- include('partials/footer') %>

@@ -1,25 +1,81 @@
 <%- include('partials/header') %>
 
-<main>
-    <h1><%= title %></h1>
-    
-    <p>Our work is categorized into several distinct areas to better serve our community.</p>
-    <ul>
-        <li>Environmental</li>
-        <p>Efforts to protect and preserve the natural environment are a key part of our mission and redering this service give a sense of fufillment.</p>
+<main class="page page-categories">
+    <%- include('partials/page-banner', {
+        title,
+        eyebrow: 'Volunteer Categories',
+        subtitle: 'Explore service areas designed to help you find projects that match your interests, your skills, and the needs of your community.',
+        bannerClass: 'page-banner--categories'
+    }) %>
 
-        <li>Educational</li>
-        <p>Initiatives focused on learning and skill development to improve the lives of those we serve.</p>
+    <section class="content-intro">
+        <h2>Find a cause that fits your strengths</h2>
+        <p class="lead">Our opportunities are organized into focused categories so volunteers can quickly discover where they want to serve and how they can contribute.</p>
+        <p>Whether you enjoy hands-on outdoor work, mentoring others, supporting neighborhood outreach, or improving community wellbeing, there is a place to start.</p>
+    </section>
 
-        <li>Community Service</li>
-        <p>Activities that strengthen and support local communities thus promoting social cohesion.</p>
+    <section class="category-grid">
+        <article class="category-card">
+            <h3>Environmental</h3>
+            <p>Protect local green spaces, improve neighborhood environments, and support sustainability efforts that benefit future generations.</p>
+            <ul class="pill-list">
+                <li>Park cleanup</li>
+                <li>Tree planting</li>
+                <li>Recycling drives</li>
+            </ul>
+        </article>
+        <article class="category-card">
+            <h3>Educational</h3>
+            <p>Help learners of all ages grow through tutoring, mentoring, literacy support, and skills-based volunteer opportunities.</p>
+            <ul class="pill-list">
+                <li>Tutoring</li>
+                <li>Mentorship</li>
+                <li>Workshop support</li>
+            </ul>
+        </article>
+        <article class="category-card">
+            <h3>Community Service</h3>
+            <p>Strengthen neighborhoods through food support, outreach events, and programs that encourage connection and care.</p>
+            <ul class="pill-list">
+                <li>Food drives</li>
+                <li>Event setup</li>
+                <li>Neighborhood outreach</li>
+            </ul>
+        </article>
+        <article class="category-card">
+            <h3>Health and Wellness</h3>
+            <p>Support projects that improve physical, emotional, and social wellbeing for individuals and families.</p>
+            <ul class="pill-list">
+                <li>Wellness fairs</li>
+                <li>Resource distribution</li>
+                <li>Care initiatives</li>
+            </ul>
+        </article>
+    </section>
 
-        <li>Health and Wellness</li>
-        <p>Programs aimed at improving physical and mental health for better wellbeing and longevity of life.</p>
-    </ul>
+    <section class="section-panel">
+        <h2>Not sure where to begin?</h2>
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Start with your availability</h3>
+                <p>Choose projects that fit the time you can realistically give, whether that is a single event or an ongoing commitment.</p>
+            </article>
+            <article class="info-card">
+                <h3>Match your skills</h3>
+                <p>Look for categories where your strengths can be immediately useful, from organizing and mentoring to physical support tasks.</p>
+            </article>
+            <article class="info-card">
+                <h3>Follow your interests</h3>
+                <p>Volunteering is more sustainable when you serve in areas you genuinely care about and want to keep returning to.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-banner cta-banner--compact">
+        <h2>Ready to explore real opportunities?</h2>
+        <p>Browse our current project listings to find a service opportunity that matches the category you care about most.</p>
+        <a href="/projects" class="btn-primary">Browse Projects</a>
+    </section>
 </main>
 
 <%- include('partials/footer') %>
-
-
-

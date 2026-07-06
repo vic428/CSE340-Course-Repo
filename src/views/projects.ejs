@@ -1,14 +1,75 @@
 <%- include('partials/header') %>
 
-<main>
-    <h1><%= title %></h1>
-    <!-- Put your page-specific content here -->
-     <h2>Upcoming Service Projects</h2>
-            <ul>
-                <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-                <li>Food Drive - Help collect and distribute food to those in need.</li>
-                <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
+<main class="page page-projects">
+    <%- include('partials/page-banner', {
+        title,
+        eyebrow: 'Current Opportunities',
+        subtitle: 'Discover projects that are ready for volunteers right now, from one-time events to recurring service opportunities.',
+        bannerClass: 'page-banner--projects'
+    }) %>
+
+    <section class="content-intro">
+        <h2>Featured service projects</h2>
+        <p class="lead">Each project is designed to meet a real need while giving volunteers a clear path to show up, help, and make a visible difference.</p>
+        <p>Browse a few upcoming opportunities below and choose the kind of service experience that best fits your time, energy, and interests.</p>
+    </section>
+
+    <section class="project-grid">
+        <article class="project-card">
+            <p class="card-eyebrow">Environmental | Weekend Project</p>
+            <h3>Park Cleanup</h3>
+            <p>Join local volunteers to remove litter, refresh walking paths, and help make public parks safer and more welcoming for everyone.</p>
+            <ul class="content-list content-list--compact">
+                <li>Best for: families, students, and neighborhood groups</li>
+                <li>Time commitment: 3 hours</li>
+                <li>Bring: closed-toe shoes, water, and work gloves</li>
             </ul>
+        </article>
+        <article class="project-card">
+            <p class="card-eyebrow">Community Service | Seasonal Drive</p>
+            <h3>Food Drive</h3>
+            <p>Help collect, sort, and distribute food items to households facing food insecurity through trusted community partners.</p>
+            <ul class="content-list content-list--compact">
+                <li>Best for: teams that enjoy organizing and logistics</li>
+                <li>Time commitment: 2 to 4 hours</li>
+                <li>Bring: a helpful attitude and a willingness to serve</li>
+            </ul>
+        </article>
+        <article class="project-card">
+            <p class="card-eyebrow">Educational | Weekly Opportunity</p>
+            <h3>Community Tutoring</h3>
+            <p>Support students in reading, math, and study skills by offering consistent encouragement and practical academic help.</p>
+            <ul class="content-list content-list--compact">
+                <li>Best for: patient communicators and mentors</li>
+                <li>Time commitment: 1 to 2 hours each week</li>
+                <li>Bring: curiosity, compassion, and subject confidence</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="section-panel">
+        <h2>What to expect when you join a project</h2>
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Clear instructions</h3>
+                <p>Each listing outlines what the project involves, who it serves, and how volunteers can prepare before they arrive.</p>
+            </article>
+            <article class="info-card">
+                <h3>Trusted partners</h3>
+                <p>We work with organizations that are ready to welcome volunteers and communicate expectations clearly.</p>
+            </article>
+            <article class="info-card">
+                <h3>Meaningful impact</h3>
+                <p>Projects are selected because they support real community needs and give volunteers a direct way to contribute.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-banner cta-banner--compact">
+        <h2>Want help finding the right fit?</h2>
+        <p>Explore categories to narrow your options or contact our team if you need guidance choosing a project that suits your schedule.</p>
+        <a href="/categories" class="btn-secondary">View Categories</a>
+    </section>
 </main>
 
 <%- include('partials/footer') %>
