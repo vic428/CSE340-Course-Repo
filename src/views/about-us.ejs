@@ -2,12 +2,60 @@
 
 <main>
     <h1><%= title %></h1>
-    
-    <p>Welcome to our organization! We are dedicated to making a positive impact in our community through various service initiatives.</p>
-    
+
+    <p>Service Network connects volunteers with organizations that need them. We believe that everyone has something to give, and every community has needs that can be met when people come together.</p>
+
+    <h2>Our Mission</h2>
+    <p>To make it simple for individuals, families, and groups to find meaningful volunteer opportunities, and to help organizations find the help they need to carry out their work.</p>
+
+    <h2>Our Story</h2>
+    <p>Service Network started as a small community effort to connect local volunteers with nearby projects. Since then, we've grown to partner with organizations across environmental, educational, community service, and health and wellness categories, helping thousands of volunteers find projects that match their skills and passions.</p>
+
+    <h2>Our Values</h2>
+    <ul>
+        <li><strong>Service</strong> - We believe small acts of service create big change.</li>
+        <li><strong>Community</strong> - We're stronger when we work together.</li>
+        <li><strong>Accessibility</strong> - Volunteering should be easy to find and easy to join.</li>
+        <li><strong>Partnership</strong> - We support the organizations doing the work on the ground.</li>
+    </ul>
+
+    <h2>Get in Touch</h2>
+    <p>Have a question, a project idea, or want to partner with us? We'd love to hear from you.</p>
+
+    <ul class="contact-info">
+        <li><strong>Email:</strong> info@servicenetwork.org</li>
+        <li><strong>Phone:</strong> (234) 800-123-4567</li>
+        <li><strong>Address:</strong> 12 Community Way, Uyo, Akwa Ibom State, Nigeria</li>
+    </ul>
+
+    <% if (typeof success !== 'undefined' && success) { %>
+        <p class="success-message">Thanks for reaching out — we'll get back to you soon!</p>
+    <% } %>
+
+    <h3>Send Us a Message</h3>
+    <form action="/contact" method="POST">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+        </div>
+
+        <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+    </form>
 </main>
 
 <%- include('partials/footer') %>
-
-
-
