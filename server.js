@@ -47,7 +47,11 @@ app.get('/projects', (req, res) => {
 app.get('/categories', (req, res) => {
     const title = 'Service Project Categories';
     res.render('categories', { title });
+});
 
+app.get('/about-us', (req, res) => {
+    const title = 'About Us';
+    res.render('about-us', {title});
 });
 
 app.listen(PORT, () => {

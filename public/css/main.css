@@ -1,30 +1,246 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+:root {
+  --navy: #1c3144;
+  --orange: #e1622f;
+  --teal: #1a7f93;
+  --teal-dark: #0e6d80;
+  --border-gray: #e2e2e2;
 }
+
+* { box-sizing: border-box; }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-
-            &:hover {
-                color: #0066cc;
-            }
-        }
-    }
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
+
+/* ── Header / Nav ─────────────────────────────── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border-gray);
+  background: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.brand .logo-icon {
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--orange);
+}
+
+.brand-name {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  color: var(--teal-dark);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.header-actions a {
+  text-decoration: none;
+}
+
+.header-actions > a:not(.icon-circle) {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.header-actions .divider {
+  color: #ccc;
+}
+
+.header-actions .icon-circle {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  color: var(--orange);
+  font-size: 13px;
+}
+
+
+/* ── Footer ────────────────────────────────────── */
+.site-footer {
+  background: var(--teal-dark);
+  color: #e3f1f3;
+  margin-top: 60px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 44px 32px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.footer-col p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 0;
+  color: #cfe7eb;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+  font-size: 13.5px;
+  color: #e3f1f3;
+}
+
+.footer-links a {
+  color: #e3f1f3;
+  text-decoration: none;
+  font-size: 13.5px;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+/* Plain text list — no bullets, no link styles */
+.footer-links--plain {
+  list-style: none;
+}
+
+.footer-links--plain li {
+  color: #e3f1f3;
+  font-size: 13.5px;
+  cursor: default;
+}
+
+/* Linked list — no bullets, links styled to match footer text */
+.footer-links--linked {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links--linked li {
+  margin-bottom: 8px;
+}
+
+.footer-links--linked a {
+  color: #e3f1f3;
+  text-decoration: none;
+  font-size: 13.5px;
+  display: block;
+}
+
+.footer-links--linked a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.social-icons .icon-circle {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-icons .icon-circle:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.footer-bottom {
+  padding: 16px 32px;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #b9dadf;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 768px) {
+  .site-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .main-nav ul {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+};
