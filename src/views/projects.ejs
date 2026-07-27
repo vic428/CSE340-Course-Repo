@@ -15,36 +15,24 @@
     </section>
 
     <section class="project-grid">
-        <article class="project-card">
-            <p class="card-eyebrow">Environmental | Weekend Project</p>
-            <h3>Park Cleanup</h3>
-            <p>Join local volunteers to remove litter, refresh walking paths, and help make public parks safer and more welcoming for everyone.</p>
-            <ul class="content-list content-list--compact">
-                <li>Best for: families, students, and neighborhood groups</li>
-                <li>Time commitment: 3 hours</li>
-                <li>Bring: closed-toe shoes, water, and work gloves</li>
-            </ul>
-        </article>
-        <article class="project-card">
-            <p class="card-eyebrow">Community Service | Seasonal Drive</p>
-            <h3>Food Drive</h3>
-            <p>Help collect, sort, and distribute food items to households facing food insecurity through trusted community partners.</p>
-            <ul class="content-list content-list--compact">
-                <li>Best for: teams that enjoy organizing and logistics</li>
-                <li>Time commitment: 2 to 4 hours</li>
-                <li>Bring: a helpful attitude and a willingness to serve</li>
-            </ul>
-        </article>
-        <article class="project-card">
-            <p class="card-eyebrow">Educational | Weekly Opportunity</p>
-            <h3>Community Tutoring</h3>
-            <p>Support students in reading, math, and study skills by offering consistent encouragement and practical academic help.</p>
-            <ul class="content-list content-list--compact">
-                <li>Best for: patient communicators and mentors</li>
-                <li>Time commitment: 1 to 2 hours each week</li>
-                <li>Bring: curiosity, compassion, and subject confidence</li>
-            </ul>
-        </article>
+        <% if (projects.length > 0) { %>
+            <% projects.forEach((project) => { %>
+                <article class="project-card">
+                    <h3>
+                        <%= new Date(project.project_date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            timeZone: 'UTC'
+                        }) %>:
+                        <%= project.title %>
+                        (<em><%= project.organization_name %></em>)
+                    </h3>
+                </article>
+            <% }); %>
+        <% } else { %>
+            <p>No service projects are currently available.</p>
+        <% } %>
     </section>
 
     <section class="section-panel">
