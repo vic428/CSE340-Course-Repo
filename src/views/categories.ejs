@@ -15,42 +15,15 @@
     </section>
 
     <section class="category-grid">
-        <article class="category-card">
-            <h3>Environmental</h3>
-            <p>Protect local green spaces, improve neighborhood environments, and support sustainability efforts that benefit future generations.</p>
-            <ul class="pill-list">
-                <li>Park cleanup</li>
-                <li>Tree planting</li>
-                <li>Recycling drives</li>
-            </ul>
-        </article>
-        <article class="category-card">
-            <h3>Educational</h3>
-            <p>Help learners of all ages grow through tutoring, mentoring, literacy support, and skills-based volunteer opportunities.</p>
-            <ul class="pill-list">
-                <li>Tutoring</li>
-                <li>Mentorship</li>
-                <li>Workshop support</li>
-            </ul>
-        </article>
-        <article class="category-card">
-            <h3>Community Service</h3>
-            <p>Strengthen neighborhoods through food support, outreach events, and programs that encourage connection and care.</p>
-            <ul class="pill-list">
-                <li>Food drives</li>
-                <li>Event setup</li>
-                <li>Neighborhood outreach</li>
-            </ul>
-        </article>
-        <article class="category-card">
-            <h3>Health and Wellness</h3>
-            <p>Support projects that improve physical, emotional, and social wellbeing for individuals and families.</p>
-            <ul class="pill-list">
-                <li>Wellness fairs</li>
-                <li>Resource distribution</li>
-                <li>Care initiatives</li>
-            </ul>
-        </article>
+        <% if (categories.length > 0) { %>
+            <% categories.forEach((category) => { %>
+                <article class="category-card">
+                    <h3><%= category.name %></h3>
+                </article>
+            <% }); %>
+        <% } else { %>
+            <p>No categories are currently available.</p>
+        <% } %>
     </section>
 
     <section class="section-panel">

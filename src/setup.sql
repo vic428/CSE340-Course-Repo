@@ -116,4 +116,186 @@ VALUES
  'Hope Community Center',
  '2026-11-15');
 
+-- =============================================
+-- Category Table
+-- =============================================
+
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+SELECT * FROM category;
+
+-- =============================================
+-- Project-Category Junction Table
+-- Many-to-many relationship
+-- =============================================
+
+CREATE TABLE service_project_category (
+    project_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    CONSTRAINT fk_service_project_category_project
+        FOREIGN KEY (project_id)
+        REFERENCES service_projects(project_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_service_project_category_category
+        FOREIGN KEY (category_id)
+        REFERENCES category(category_id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+-- =============================================
+-- Insert Categories
+-- =============================================
+
+INSERT INTO category (name)
+VALUES
+    ('Community Support'),
+    ('Environment'),
+    ('Health and Wellness'),
+    ('Education and Mentorship'),
+    ('Donation Drives'),
+    ('Animal Welfare');
  
+SELECT * FROM category;
+
+-- =============================================
+-- Associate Projects with Categories
+-- =============================================
+
+-- Community Food Drive
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Community Food Drive'
+  AND c.name IN ('Community Support', 'Donation Drives');
+
+-- Neighborhood Cleanup
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Neighborhood Cleanup'
+  AND c.name IN ('Community Support', 'Environment');
+
+-- School Supply Donation
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'School Supply Donation'
+  AND c.name IN ('Education and Mentorship', 'Donation Drives');
+
+-- Senior Assistance Day
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Senior Assistance Day'
+  AND c.name = 'Community Support';
+
+-- Holiday Toy Drive
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Holiday Toy Drive'
+  AND c.name IN ('Community Support', 'Donation Drives');
+
+-- Tree Planting Campaign
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Tree Planting Campaign'
+  AND c.name = 'Environment';
+
+-- Blood Donation Drive
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Blood Donation Drive'
+  AND c.name IN ('Health and Wellness', 'Donation Drives');
+
+-- Community Health Fair
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Community Health Fair'
+  AND c.name IN ('Community Support', 'Health and Wellness');
+
+-- Community Garden Project
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Community Garden Project'
+  AND c.name IN ('Community Support', 'Environment');
+
+-- Beach Cleanup
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Beach Cleanup'
+  AND c.name = 'Environment';
+
+-- Youth Mentorship Program
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Youth Mentorship Program'
+  AND c.name = 'Education and Mentorship';
+
+-- Adult Literacy Workshop
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Adult Literacy Workshop'
+  AND c.name = 'Education and Mentorship';
+
+-- Animal Shelter Volunteer Day
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Animal Shelter Volunteer Day'
+  AND c.name IN ('Community Support', 'Animal Welfare');
+
+-- Charity Walk for Wellness
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Charity Walk for Wellness'
+  AND c.name IN ('Community Support', 'Health and Wellness');
+
+-- Winter Clothing Drive
+INSERT INTO service_project_category (project_id, category_id)
+SELECT sp.project_id, c.category_id
+FROM service_projects sp
+CROSS JOIN category c
+WHERE sp.title = 'Winter Clothing Drive'
+  AND c.name IN ('Community Support', 'Donation Drives');
+
+--This is to check for projects without any category
+SELECT
+    sp.project_id,
+    sp.title
+FROM service_projects sp
+LEFT JOIN service_project_category spc
+    ON sp.project_id = spc.project_id
+WHERE spc.project_id IS NULL;
+
+SELECT * FROM category;
+
+SELECT * FROM service_project_category;
