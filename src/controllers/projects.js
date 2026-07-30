@@ -1,36 +1,32 @@
 // Import any needed model functions
-import { getAllProjects } from '../models/projects.js';
+import {
+    getUpcomingProjects,
+    getProjectDetails
+} from '../models/projects.js';
+
+const NUMBER_OF_UPCOMING_PROJECTS = 5;
 
 // Define any controller functions
 const showProjectsPage = async (req, res) => {
-    const projects = await getAllProjects();
-    const title = 'Service Projects';
+    const projects = await getUpcomingProjects(NUMBER_OF_UPCOMING_PROJECTS);
+    const title = 'Upcoming Service Projects';
 
     res.render('projects', { title, projects });
 };
 
-const getProjectsByOrganizationId = async (organizationId) => {
-      const query = `
-        SELECT
-          project_id,
-          organization_id,
-          title,
-          description,
-          location,
-          date
-        FROM project
-        WHERE organization_id = $1
-        ORDER BY date;
-      `;
-      
-      const queryParams = [organizationId];
-      const result = await db.query(query, queryParams);
+const showProjectDetailsPage = async (req, res) => {
+    const projectId = req.params.id;
+    const project = await getProjectDetails(projectId);
 
-      return result.rows;
+    if (!project) {
+        const err = new Error('Service Project Not Found');
+        err.status = 404;
+        throw err;
+    }
+
+    const title = 'Service Project Details';
+    res.render('project', { title, project });
 };
 
 // Export any controller functions
-export { showProjectsPage };
-
-// Export the model functions
-export { getAllProjects, getProjectsByOrganizationId };
+export { showProjectsPage, showProjectDetailsPage };
