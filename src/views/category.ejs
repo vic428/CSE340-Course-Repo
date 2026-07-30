@@ -1,18 +1,53 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
+<main class="page detail-page category-detail">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/categories">Service Categories</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page"><%= category.name %></span>
+    </nav>
 
-    <h2><%= category.name %></h2>
+    <header class="detail-hero detail-hero--category">
+        <div class="category-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <p class="detail-eyebrow">Service category</p>
+            <h1><%= category.name %></h1>
+            <p class="detail-lead">Explore volunteer opportunities connected to this area of service and find a project where you can make a meaningful contribution.</p>
+        </div>
+    </header>
 
-    <h3>Service Projects</h3>
-    <% if (projects.length > 0) { %>
-        <ul>
-            <% projects.forEach(project => { %>
-                <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
-            <% }); %>
-        </ul>
-    <% } else { %>
-        <p>No service projects are assigned to this category.</p>
-    <% } %>
+    <section class="detail-panel category-projects" aria-labelledby="category-projects-heading">
+        <div class="section-heading">
+            <div>
+                <p class="detail-eyebrow">Available opportunities</p>
+                <h2 id="category-projects-heading">Service projects</h2>
+            </div>
+            <% if (projects.length > 0) { %>
+                <span class="result-count"><%= projects.length %> <%= projects.length === 1 ? 'project' : 'projects' %></span>
+            <% } %>
+        </div>
+
+        <% if (projects.length > 0) { %>
+            <ul class="detail-project-list">
+                <% projects.forEach(project => { %>
+                    <li>
+                        <a href="/project/<%= project.project_id %>">
+                            <span><%= project.title %></span>
+                            <span class="link-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div class="detail-empty-state">
+                <h3>No projects in this category yet</h3>
+                <p>There are no service projects assigned to this category right now.</p>
+                <a class="btn-secondary" href="/projects">Browse all projects</a>
+            </div>
+        <% } %>
+    </section>
 </main>
 <%- include('partials/footer') %>
