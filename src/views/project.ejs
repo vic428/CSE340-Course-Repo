@@ -1,22 +1,65 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
+<main class="page detail-page project-detail">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/projects">Service Projects</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page"><%= project.title %></span>
+    </nav>
 
-    <h2><%= project.title %></h2>
-    <p>
-        Organization:
-        <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
-    </p>
-    <p>Description: <%= project.description %></p>
-    <p>Location: <%= project.location %></p>
-    <p>
-        Date:
-        <%= new Date(project.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            timeZone: 'UTC'
-        }) %>
-    </p>
+    <header class="detail-hero detail-hero--project">
+        <p class="detail-eyebrow">Service opportunity</p>
+        <h1><%= project.title %></h1>
+        <p class="detail-lead"><%= project.description %></p>
+    </header>
+
+    <div class="detail-layout">
+        <section class="detail-panel" aria-labelledby="project-overview-heading">
+            <h2 id="project-overview-heading">Project overview</h2>
+            <p><%= project.description %></p>
+
+            <div class="detail-tags">
+                <h3>Categories</h3>
+                <% if (categories.length > 0) { %>
+                    <ul class="tag-list" aria-label="Project categories">
+                        <% categories.forEach(category => { %>
+                            <li><a href="/category/<%= category.category_id %>"><%= category.name %></a></li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p class="detail-empty">No categories are assigned to this project.</p>
+                <% } %>
+            </div>
+        </section>
+
+        <aside class="detail-sidebar" aria-label="Project information">
+            <h2>Project information</h2>
+            <dl class="detail-meta">
+                <div>
+                    <dt>Date</dt>
+                    <dd>
+                        <time datetime="<%= new Date(project.date).toISOString().split('T')[0] %>">
+                            <%= new Date(project.date).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                timeZone: 'UTC'
+                            }) %>
+                        </time>
+                    </dd>
+                </div>
+                <div>
+                    <dt>Location</dt>
+                    <dd><%= project.location %></dd>
+                </div>
+                <div>
+                    <dt>Partner organization</dt>
+                    <dd>
+                        <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+                    </dd>
+                </div>
+            </dl>
+            <a class="btn-secondary detail-back-link" href="/projects">View all projects</a>
+        </aside>
+    </div>
 </main>
 <%- include('partials/footer') %>

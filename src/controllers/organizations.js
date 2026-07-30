@@ -12,11 +12,20 @@ const showOrganizationsPage = async (req, res) => {
 
 const showOrganizationDetailsPage = async (req, res) => {
     const organizationId = req.params.id;
-    const organizationDetails = await getOrganizationDetails(organizationId);
-    const projects = await getProjectsByOrganizationId(organizationId);
+    const [organizationDetails, projects] = await Promise.all([
+        getOrganizationDetails(organizationId),
+        getProjectsByOrganizationId(organizationId)
+    ]);
+
+    if (!organizationDetails) {
+        const err = new Error('Organization Not Found');
+        err.status = 404;
+        throw err;
+    }
+
     const title = 'Organization Details';
 
-    res.render('organization', {title, organizationDetails, projects});
+    res.render('organization', { title, organizationDetails, projects });
 };
 
 // Export any controller functions

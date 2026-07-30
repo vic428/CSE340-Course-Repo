@@ -1,17 +1,55 @@
 <%- include('partials/header') %>
-<main>
-    <h1><%= title %></h1>
+<main class="page detail-page organization-detail">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/organizations">Partner Organizations</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page"><%= organizationDetails.name %></span>
+    </nav>
 
-    <h2><%= organizationDetails.name %></h2>
-    <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
+    <header class="detail-hero detail-hero--organization">
+        <div class="organization-logo">
+            <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
+        </div>
+        <div>
+            <p class="detail-eyebrow">Partner organization</p>
+            <h1><%= organizationDetails.name %></h1>
+            <p class="detail-lead"><%= organizationDetails.description %></p>
+            <a class="organization-contact" href="mailto:<%= organizationDetails.contact_email %>">
+                <span>Contact organization</span>
+                <strong><%= organizationDetails.contact_email %></strong>
+            </a>
+        </div>
+    </header>
 
-    <p>Description: <%= organizationDetails.description %></p>
+    <section class="detail-panel organization-projects" aria-labelledby="organization-projects-heading">
+        <div class="section-heading">
+            <div>
+                <p class="detail-eyebrow">Get involved</p>
+                <h2 id="organization-projects-heading">Service projects</h2>
+            </div>
+            <% if (projects.length > 0) { %>
+                <span class="result-count"><%= projects.length %> <%= projects.length === 1 ? 'project' : 'projects' %></span>
+            <% } %>
+        </div>
 
-    <h3>Service Projects</h3>
-    <ul>
-        <% projects.forEach(project => { %>
-            <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li>
-        <% }) %>
-    </ul>
+        <% if (projects.length > 0) { %>
+            <ul class="detail-project-list">
+                <% projects.forEach(project => { %>
+                    <li>
+                        <a href="/project/<%= project.project_id %>">
+                            <span><%= project.title %></span>
+                            <span class="link-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <div class="detail-empty-state">
+                <h3>No active projects yet</h3>
+                <p>This organization does not currently have any listed service projects.</p>
+                <a class="btn-secondary" href="/projects">Browse all projects</a>
+            </div>
+        <% } %>
+    </section>
 </main>
 <%- include('partials/footer') %>
