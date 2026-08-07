@@ -40,3 +40,14 @@
             </div>
         </div>
     </header>
+
+    <% const messages = flash(); %>
+    <% Object.keys(messages).forEach(type => { %>
+        <% if (messages[type].length > 0) { %>
+            <div class="alert <%= type %>" role="alert">
+                <% messages[type].forEach(msg => { %>
+                    <div><%= msg %></div>
+                <% }); %>
+            </div>
+        <% } %>
+    <% }); %>
