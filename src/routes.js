@@ -13,7 +13,10 @@ import {
 
 import {
     showProjectsPage,
-    showProjectDetailsPage
+    showProjectDetailsPage,
+    showNewProjectForm,
+    processNewProjectForm,
+    projectValidation
 } from './controllers/projects.js';
 import {
     showCategoriesPage,
@@ -33,6 +36,12 @@ router.get('/organization/:id', showOrganizationDetailsPage);
 
 // Route for service project details page
 router.get('/project/:id', showProjectDetailsPage);
+
+// Route for new project page
+router.get('/new-project', showNewProjectForm);
+
+// Route to handle new project form submission
+router.post('/new-project', projectValidation, processNewProjectForm);
 
 // Route for service category details page
 router.get('/category/:id', showCategoryDetailsPage);
